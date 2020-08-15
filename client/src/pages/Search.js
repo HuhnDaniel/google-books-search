@@ -1,8 +1,11 @@
 import React from "react";
+import SearchArea from "../components/SearchArea";
 
 function Search() {
     return (
-        <div>Search</div>
+        <main>
+            <SearchArea />
+        </main>
     );
 }
 
