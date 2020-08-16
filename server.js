@@ -16,6 +16,9 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebookssearch");
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
