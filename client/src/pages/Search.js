@@ -5,7 +5,8 @@ import API from "../utils/API";
 
 class Search extends Component {
     state = {
-        bookSearch: ""
+        bookSearch: "",
+        searchList: []
     };
 
     handleChange = (e) => {
@@ -16,17 +17,30 @@ class Search extends Component {
 
     handleSearchClick = async (e) => {
         e.preventDefault();
-        console.log(this.state);
 
-        const books = await API.searchBooks(this.state.bookSearch);
-        console.log(books);
+        const { data } = await API.searchBooks(this.state.bookSearch);
+
+        const booksInfo = data.items.map(({ volumeInfo }) => {
+            const book = {
+                title: volumeInfo.title,
+                author: volumeInfo.authors[0],
+                synopsis: volumeInfo.description,
+                date: volumeInfo.publishedDate,
+                thumbnail: volumeInfo.imageLinks.thumbnail
+            }
+            return book;
+        });
+
+        this.setState({
+            searchList: booksInfo
+        });
     };
 
     render() {
         return (
             <main>
                 <SearchArea handleSearchClick={this.handleSearchClick} handleChange={this.handleChange} />
-                <SearchResults />
+                <SearchResults searchList={this.searchList} />
             </main>
         );
     }
