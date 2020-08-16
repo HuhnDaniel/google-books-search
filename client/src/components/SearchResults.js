@@ -1,12 +1,12 @@
 import React from "react";
 import BookCard from "./BookCard";
 
-function SearchResults({ searchList }) {
+function SearchResults({ searchList, handleSaveClick }) {
     return (
         <section className="flex flex-col border m-4 p-2">
             <h2 className="m-2">Results</h2>
             {searchList.map((book, i) => (
-                <BookCard book={book} key={i} />
+                <BookCard book={book} key={i} index={i} handleSaveClick={handleSaveClick} />
             ))}
         </section>
     );

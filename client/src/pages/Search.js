@@ -23,10 +23,10 @@ class Search extends Component {
         const booksInfo = data.items.map(({ volumeInfo }) => {
             const book = {
                 title: volumeInfo.title,
-                author: volumeInfo.authors[0],
+                author: volumeInfo.authors ? volumeInfo.authors[0] : "No Attributed Author",
                 synopsis: volumeInfo.description,
-                date: volumeInfo.publishedDate,
-                thumbnail: volumeInfo.imageLinks.thumbnail
+                link: volumeInfo.infoLink,
+                thumbnail: volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : "https://via.placeholder.com/150"
             }
             return book;
         });
@@ -36,11 +36,19 @@ class Search extends Component {
         });
     };
 
+    handleSaveClick = async (e) => {
+        e.preventDefault();
+        const index = parseInt(e.target.name);
+
+        await API.saveBook(this.state.searchList[index]);
+        console.log("Successfully added to book list!");
+    }
+
     render() {
         return (
             <main className="mx-auto sm:w-2/3">
                 <SearchArea handleSearchClick={this.handleSearchClick} handleChange={this.handleChange} />
-                <SearchResults searchList={this.state.searchList} />
+                <SearchResults searchList={this.state.searchList} handleSaveClick={this.handleSaveClick} />
             </main>
         );
     }
