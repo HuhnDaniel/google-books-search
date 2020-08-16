@@ -38,9 +38,9 @@ class Search extends Component {
 
     render() {
         return (
-            <main>
+            <main className="mx-auto sm:w-2/3">
                 <SearchArea handleSearchClick={this.handleSearchClick} handleChange={this.handleChange} />
-                <SearchResults searchList={this.searchList} />
+                <SearchResults searchList={this.state.searchList} />
             </main>
         );
     }
