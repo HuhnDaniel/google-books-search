@@ -46,12 +46,12 @@ class Search extends Component {
 
     render() {
         return (
-            <main className="mx-auto sm:w-2/3">
+            <main className="m-4 sm:mx-auto sm:w-2/3">
                 <SearchArea handleSearchClick={this.handleSearchClick} handleChange={this.handleChange} />
                 <SearchResults searchList={this.state.searchList} handleSaveClick={this.handleSaveClick} />
             </main>
         );
-    }
+    };
 }
 
 export default Search;
