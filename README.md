@@ -2,11 +2,14 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/HuhnDaniel/google-books-search) ![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)  
 This is a web application that allows users to search for books via the Google Books API, then save them to a reading list.  Once on the list a book can be deleted when viewing the list.
 ## Table of Contents
+- [Deployment](#deployment)
 - [Installation and Running](#installation-and-running)
 - [Technologies](#technologies)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Authors](#authors)
+## Deployment
+Deployed at https://murmuring-chamber-86936.herokuapp.com
 ## Installation and Running
 To install necessary dependencies, run the following command in the root folder of this application
 ```
